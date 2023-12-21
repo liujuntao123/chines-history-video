@@ -1,29 +1,10 @@
-# VueJS-with-Vite
+# 中国历朝代历史视频讲解
 
-This template should help get you started developing with Vue 3 in Vite.
+汇聚了B站上综合数据（点赞，播放，投币，收藏）最高的一个/几个视频。
+纯手动整理，如果你也是历史爱好者，觉得对你有帮助，可以star一个。
 
-## Recommended IDE Setup
+## 网站预览
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![PixPin_2023-12-21_17-15-16 (1)](https://github.com/liujuntao123/chines-history-video/assets/22583601/0f199148-ad2c-451b-b044-780d4853f9b2)
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
