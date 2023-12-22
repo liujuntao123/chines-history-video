@@ -18,7 +18,7 @@
     <div class="video-list">
       <a-card class="card" :title="'视频讲解'">
         <div class="video-box" v-for="link of links" :key="link">
-          <div @load.capture="onFrameLoaded" class="frame" v-html="link"></div>
+          <div @load.capture="onFrameLoaded" class="frame" v-html="addAutoplayParameter(link)"></div>
         </div>
       </a-card>
     </div>
@@ -40,6 +40,33 @@ const onFrameLoaded = (e) => {
   frame.style.width = '100%';
   frame.style.height = '100%';
 };
+
+const addAutoplayParameter=(embedCode)=> {
+    // 使用正则表达式找到src链接
+    var srcRegex = /src=["'](.*?)["']/;
+    var match = embedCode.match(srcRegex);
+
+    if (match) {
+        // 提取src链接
+        var srcUrl = match[1];
+
+        // 检查链接中是否已经包含参数
+        if (srcUrl.includes('?')) {
+            // 如果已经包含参数，在其后添加autoplay=0
+            srcUrl += '&autoplay=0';
+        } else {
+            // 如果没有参数，添加?autoplay=0
+            srcUrl += '?autoplay=0';
+        }
+
+        // 将修改后的src链接替换原始字符串中的src部分
+        embedCode = embedCode.replace(srcRegex, 'src="' + srcUrl + '"');
+    }
+
+    return embedCode;
+}
+
+
 </script>
 
 <style scoped>
