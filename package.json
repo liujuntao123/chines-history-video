@@ -7,6 +7,7 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "^4.0.7",
     "three": "^0.159.0",
     "vanta": "^0.5.24",
