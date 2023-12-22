@@ -4,6 +4,8 @@
 
 纯手动整理，如果你也是历史爱好者，觉得对你有帮助，可以star一个。
 
+如果有任何建议，欢迎提issue。
+
 在线地址:https://historyline.online
 
 ## 网站预览
