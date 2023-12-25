@@ -2,10 +2,10 @@
   <div class="container">
     <head-banner></head-banner>
     <div class="main-content">
-      <Timeline @itemClick="showDrawer" />
+      <Timeline @itemClick="showDrawer" :data="data"/>
       <HistoryTable />
     </div>
-    <detail-drawer :open="open" :links="currentItem.links" :title="currentItem.dynasty" :description="currentItem.description" @onClose="onClose"></detail-drawer>
+    <detail-drawer :open="open" :links="currentItem.links" :title="currentItem.dynasty" :description="currentItem.description" @move="handleOnMove" @onClose="onClose"></detail-drawer>
     <a-float-button-group shape="circle" >
       <a-float-button href="https://github.com/liujuntao123/chines-history-video" target="_blank">
         <template #icon>
@@ -24,16 +24,28 @@ import DetailDrawer from './components/DetailDrawer.vue';
 import HistoryTable from './components/HistoryTable.vue';
 import { GithubOutlined } from '@ant-design/icons-vue';
 import { ref } from 'vue';
+import {data} from './components/data'
+
 const open = ref(false);
 const currentItem = ref({});
-const showDrawer = (item) => {
-  console.log(item);
+const currentIndex=ref(1)
+const showDrawer = (item,i) => {
   currentItem.value = item;
   open.value = true;
+  currentIndex.value=i
 };
 const onClose = () => {
   open.value = false;
 };
+const handleOnMove=(step)=>{
+  const newIndex=currentIndex.value+step
+  if(newIndex>data.length-1||newIndex<0){
+    return
+  }
+  currentIndex.value=newIndex
+  currentItem.value=data[currentIndex.value]
+}
+
 </script>
 
 <style scoped>

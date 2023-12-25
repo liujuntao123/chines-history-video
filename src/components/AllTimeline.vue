@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="main-timeline">
-      <div class="timeline" v-for="item of data" :key="item.dynasty">
+      <div class="timeline" v-for="(item,i) of data" :key="item.dynasty">
         <div class="timeline-content">
-          <div @click="$emit('itemClick', item)" class="circle">
+          <div @click="$emit('itemClick', item,i)" class="circle">
             <p class="dynasty">{{ item.dynasty }}</p>
           </div>
           <div class="content">
@@ -22,7 +22,9 @@
 </template>
 
 <script setup>
-import { data } from './data';
+defineProps({
+  data:Array
+});
 </script>
 
 <style scoped>

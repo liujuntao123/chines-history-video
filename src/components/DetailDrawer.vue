@@ -2,12 +2,12 @@
   <a-drawer :destroyOnClose="true" width="960" :bodyStyle="bodyStyle" :title="title" size="large" placement="right" :open="open" @close="$emit('onClose')">
     <div class="nav">
       <div class="arrow-left">
-        <img src="../assets/arrow.png" alt="上一个" />
+        <img @click="$emit('move',-1)" src="../assets/arrow.png" alt="上一个" />
         <span>上一个</span>
       </div>
       <p class="title">{{ title }}</p>
       <div class="arrow-right">
-        <img src="../assets/arrow.png" alt="下一个" />
+        <img @click="$emit('move',1)" src="../assets/arrow.png" alt="下一个" />
         <span>下一个</span>
       </div>
     </div>
@@ -30,6 +30,7 @@ defineProps({
   title: String,
   description: String,
   links: Array,
+  open:Boolean
 });
 const bodyStyle = {
   background: '##e9e7ef',
@@ -116,7 +117,7 @@ const addAutoplayParameter=(embedCode)=> {
 .arrow-left span,
 .arrow-right span {
   position: absolute;
-  bottom: 28px;
+  bottom: -16px;
 }
 .arrow-right img {
   width: 200px;
