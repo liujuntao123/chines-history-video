@@ -5,7 +5,12 @@
         <h1 class="site-title">
           <p>中国历朝代视频讲解</p>
         </h1>
-        <p class="site-description">从古老文明的第一声号子起，中国历史经历了五千年漫长而耐人寻味的过程，其间既有繁荣辉煌，也有曲折艰难，过去的历史的积累，铸成了今天灿烂的现代文明。通过学习和了解中国历史，人们可以从王朝的兴衰演变中体会生存的智慧，从叱咤风云的历史人物经历中感悟人生真谛。</p>
+        <div class="content-container">
+
+          <p class="site-description">滚滚长江东逝水，浪花淘尽英雄。是非成败转头空。青山依旧在，几度夕阳红。</p>
+          <p class="site-description">白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢。古今多少事，都付笑谈中。</p>
+          <p class="author">杨慎《临江仙》</p>
+        </div>
         <span class="stow_home"></span>
       </div>
     </div>
@@ -28,8 +33,20 @@
   text-align: center;
   font-size: 60px;
 }
+
+.content-container{
+  width: fit-content;
+  margin: 0 auto;
+}
+
 .site-description {
   line-height: 1.5;
   font-size: 40px;
+  text-align: center;
+}
+
+.author{
+  font-size: 32px;
+  text-align: right;
 }
 </style>
