@@ -40,6 +40,7 @@ defineProps({
   color: #a78e44;
   cursor: pointer;
   background: center 100% / 100% 100% no-repeat url('../assets/scroll.png');
+  font-family: "zhongzhiqi";
 }
 .detail {
   background: center 100% / 100% 100% no-repeat url('../assets/paper.png');

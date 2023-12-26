@@ -16,7 +16,8 @@
 
 <style scoped>
 .banner-container {
-  color: white;
+  color: #000;
+  font-family: "zhongzhiqi";
 }
 .site-header {
   background: center / contain no-repeat url(https://5000yan.com/templets/wuqianyan/skin/img/zhonghua-banner.jpg);
@@ -25,10 +26,10 @@
 }
 .site-title {
   text-align: center;
-  font-size: 40px;
+  font-size: 60px;
 }
 .site-description {
   line-height: 1.5;
-  font-size: 24px;
+  font-size: 40px;
 }
 </style>
