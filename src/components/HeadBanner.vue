@@ -27,7 +27,7 @@
 .site-header {
   background: center / contain no-repeat url(https://5000yan.com/templets/wuqianyan/skin/img/zhonghua-banner.jpg);
   background-color: #cca973;
-  padding: 120px 40px;
+  padding: 40px 40px;
 }
 .site-title {
   text-align: center;
