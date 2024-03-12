@@ -2,7 +2,13 @@
   <div class="recomended-container">
     <div class="title">up推荐</div>
     <a-space wrap align="start" :size="12">
-      <a-popover v-for="up in ups" :key="up.mid" :title="up.uname" :content="up.sign" trigger="hover">
+      <a-popover
+        v-for="up in ups"
+        :key="up.mid"
+        :title="up.uname"
+        :content="up.sign"
+        trigger="hover"
+      >
         <div @click="handleClick(up.mid)" class="recomended-item">
           <img referrerpolicy="no-referrer" :src="up.face" class="recomended-avatar" />
           <p>{{ up.uname }}</p>

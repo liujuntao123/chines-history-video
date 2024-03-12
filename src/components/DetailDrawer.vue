@@ -1,13 +1,22 @@
 <template>
-  <a-drawer :destroyOnClose="true" width="960" :bodyStyle="bodyStyle" :title="title" size="large" placement="right" :open="open" @close="$emit('onClose')">
+  <a-drawer
+    :destroyOnClose="true"
+    width="960"
+    :bodyStyle="bodyStyle"
+    :title="title"
+    size="large"
+    placement="right"
+    :open="open"
+    @close="$emit('onClose')"
+  >
     <div class="nav">
       <div class="arrow-left">
-        <img @click="$emit('move',-1)" src="../assets/arrow.png" alt="上一个" />
+        <img @click="$emit('move', -1)" src="../assets/arrow.png" alt="上一个" />
         <span>上一个</span>
       </div>
       <p class="title">{{ title }}</p>
       <div class="arrow-right">
-        <img @click="$emit('move',1)" src="../assets/arrow.png" alt="下一个" />
+        <img @click="$emit('move', 1)" src="../assets/arrow.png" alt="下一个" />
         <span>下一个</span>
       </div>
     </div>
@@ -18,7 +27,11 @@
     <div class="video-list">
       <a-card class="card" :title="'视频讲解'">
         <div class="video-box" v-for="link of links" :key="link">
-          <div @load.capture="onFrameLoaded" class="frame" v-html="addAutoplayParameter(link)"></div>
+          <div
+            @load.capture="onFrameLoaded"
+            class="frame"
+            v-html="addAutoplayParameter(link)"
+          ></div>
         </div>
       </a-card>
     </div>
@@ -30,7 +43,7 @@ defineProps({
   title: String,
   description: String,
   links: Array,
-  open:Boolean
+  open: Boolean,
 });
 const bodyStyle = {
   background: '##e9e7ef',
@@ -42,32 +55,30 @@ const onFrameLoaded = (e) => {
   frame.style.height = '100%';
 };
 
-const addAutoplayParameter=(embedCode)=> {
-    // 使用正则表达式找到src链接
-    var srcRegex = /src=["'](.*?)["']/;
-    var match = embedCode.match(srcRegex);
+const addAutoplayParameter = (embedCode) => {
+  // 使用正则表达式找到src链接
+  var srcRegex = /src=["'](.*?)["']/;
+  var match = embedCode.match(srcRegex);
 
-    if (match) {
-        // 提取src链接
-        var srcUrl = match[1];
+  if (match) {
+    // 提取src链接
+    var srcUrl = match[1];
 
-        // 检查链接中是否已经包含参数
-        if (srcUrl.includes('?')) {
-            // 如果已经包含参数，在其后添加autoplay=0
-            srcUrl += '&autoplay=0';
-        } else {
-            // 如果没有参数，添加?autoplay=0
-            srcUrl += '?autoplay=0';
-        }
-
-        // 将修改后的src链接替换原始字符串中的src部分
-        embedCode = embedCode.replace(srcRegex, 'src="' + srcUrl + '"');
+    // 检查链接中是否已经包含参数
+    if (srcUrl.includes('?')) {
+      // 如果已经包含参数，在其后添加autoplay=0
+      srcUrl += '&autoplay=0';
+    } else {
+      // 如果没有参数，添加?autoplay=0
+      srcUrl += '?autoplay=0';
     }
 
-    return embedCode;
-}
+    // 将修改后的src链接替换原始字符串中的src部分
+    embedCode = embedCode.replace(srcRegex, 'src="' + srcUrl + '"');
+  }
 
-
+  return embedCode;
+};
 </script>
 
 <style scoped>
