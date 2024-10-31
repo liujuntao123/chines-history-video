@@ -119,14 +119,14 @@
               rel="nofollow"
               ><strong>传说时代</strong></a
             ><br /><small style="font-size: 0.857em"
-              >（<a
+              ><a
                 href="https://zh.wikipedia.org/wiki/%E4%B8%89%E7%9A%87%E4%BA%94%E5%B8%9D"
                 title="三皇五帝"
                 style="color: rgb(11, 0, 128)"
                 target="_blank"
                 rel="nofollow"
-                >三皇五帝</a
-              >）</small
+                >（三皇五帝）</a
+              ></small
             >
           </td>
         </tr>
@@ -853,13 +853,10 @@ table {
   background: #fff;
 }
 
-th, td {
+th,
+td {
   padding: 12px 8px;
   transition: all 0.2s ease;
-}
-
-td:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 a {
@@ -886,13 +883,23 @@ a strong {
 /* 优化标题样式 */
 .firstRow th {
   padding: 16px;
-  background: linear-gradient(145deg, #f6f6f6, #EFEEEE);
+  background: linear-gradient(145deg, #f6f6f6, #efeeee);
 }
 
 /* 为不同时期添加微妙的渐变背景 */
-[bgcolor="#C1F8F7"] { background: linear-gradient(145deg, #C1F8F7, #b1e8e7); }
-[bgcolor="#E1FFE1"] { background: linear-gradient(145deg, #E1FFE1, #d1efd1); }
-[bgcolor="#FFECE1"] { background: linear-gradient(145deg, #FFECE1, #efded1); }
-[bgcolor="#FFE1FF"] { background: linear-gradient(145deg, #FFE1FF, #efd1ef); }
-[bgcolor="#FFFFE1"] { background: linear-gradient(145deg, #FFFFE1, #efef d1); }
+[bgcolor='#C1F8F7'] {
+  background: linear-gradient(145deg, #c1f8f7, #b1e8e7);
+}
+[bgcolor='#E1FFE1'] {
+  background: linear-gradient(145deg, #e1ffe1, #d1efd1);
+}
+[bgcolor='#FFECE1'] {
+  background: linear-gradient(145deg, #ffece1, #efded1);
+}
+[bgcolor='#FFE1FF'] {
+  background: linear-gradient(145deg, #ffe1ff, #efd1ef);
+}
+[bgcolor='#FFFFE1'] {
+  background: linear-gradient(145deg, #ffffe1, #efef d1);
+}
 </style>
