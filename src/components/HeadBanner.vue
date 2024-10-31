@@ -22,35 +22,57 @@
 
 <script setup></script>
 
+
+
 <style scoped>
 .banner-container {
-  color: #000;
+  color: #2c1810;  
   font-family: 'zhongzhiqi';
-}
-.site-header {
-  background: center / contain no-repeat
-    url(https://5000yan.com/templets/wuqianyan/skin/img/zhonghua-banner.jpg);
-  background-color: #cca973;
-  padding: 40px 40px;
-}
-.site-title {
-  text-align: center;
-  font-size: 60px;
+  /* background: #f8f1e5;  */
 }
 
 .content-container {
-  width: fit-content;
+  width: 1400px;
   margin: 0 auto;
+  padding: 20px;  
+  background: #f8f1e5;  /* 改为更浅的米白色背景 */
+  border-radius: 8px;  
 }
 
-.site-description {
-  line-height: 1.5;
-  font-size: 40px;
+.site-header {
+  background: center / cover no-repeat  
+    url(https://5000yan.com/templets/wuqianyan/skin/img/zhonghua-banner.jpg);
+  /* padding: 60px 0;   */
+  position: relative;
+  overflow: hidden;  /* 添加此行以确保伪元素不会溢出 */
+}
+
+
+.site-title {
   text-align: center;
+  font-size: 80px;
+  margin-top: 30px;
+  margin-bottom: 30px;  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);  /* 添加文字阴影 */
+  p{
+    margin: 0;
+  }
+}
+
+
+
+.site-description {
+  line-height: 1.8;  
+  font-size: 36px;  
+  text-align: center;
+  margin: 15px 0;  
 }
 
 .author {
-  font-size: 32px;
+  font-size: 28px;  
   text-align: right;
+  margin-top: 20px;  
+  color: #4a3427;  /* 调整作者署名颜色，使其更协调 */
+  font-style: italic;  
 }
 </style>

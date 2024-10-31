@@ -10,7 +10,7 @@
 
 ## 网站预览
 
-![PixPin_2023-12-22_14-55-54 (3)](https://github.com/liujuntao123/chines-history-video/assets/22583601/eb865274-606b-49ca-9bd2-62fa35e97adb)
+![alt text](Clip_2024-10-31_15-29-21.png)
 
 
 ## Star History

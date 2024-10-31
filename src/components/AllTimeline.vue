@@ -1,20 +1,16 @@
 <template>
   <div>
-    <div class="main-timeline">
-      <div class="timeline" v-for="(item,i) of data" :key="item.dynasty">
-        <div class="timeline-content">
-          <div @click="$emit('itemClick', item,i)" class="circle">
-            <p class="dynasty">{{ item.dynasty }}</p>
+    <div class="timeline">
+      <div class="entry" v-for="(item,i) of data" :key="item.dynasty">
+        <div class="title-section">
+          <div @click="$emit('itemClick', item,i)" class="scroll-title">
+            {{ item.dynasty }}
           </div>
-          <div class="content">
-            <span class="year">{{ item.duration }}</span>
-            <div class="detail">
-              <p class="title">
-                {{ item.dynasty }}
-              </p>
-              <p class="description">{{ item.description }}</p>
-            </div>
-          </div>
+          <div class="period">{{ item.duration }}</div>
+        </div>
+        <div class="content">
+          <div class="dynasty-name">{{ item.dynasty }}</div>
+          <div class="description">{{ item.description }}</div>
         </div>
       </div>
     </div>
@@ -23,261 +19,186 @@
 
 <script setup>
 defineProps({
-  data:Array
+  data: Array
 });
 </script>
 
 <style scoped>
-.dynasty {
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 
+    0 0 40px rgba(139, 69, 19, 0.1),
+    0 0 100px rgba(139, 69, 19, 0.05);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 300px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, 
+    rgba(196, 164, 132, 0) 0%,
+    rgba(196, 164, 132, 1) 15%,
+    rgba(196, 164, 132, 1) 85%,
+    rgba(196, 164, 132, 0) 100%
+  );
+}
+
+.entry {
+  margin: 30px 0;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.title-section {
+  flex: 0 0 250px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 50px;
+  position: relative;
+}
+
+.scroll-title {
+  width: 100px;
+  height: 40px;
+  background: #f9f2e6;
+  border: 2px solid #8b4513;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 28px;
-  font-weight: 600;
-  color: #a78e44;
+  color: #8b4513;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
   cursor: pointer;
-  background: center 100% / 100% 100% no-repeat url('../assets/scroll.png');
-  font-family: "zhongzhiqi";
+  background-image: 
+    linear-gradient(45deg, 
+      rgba(139, 69, 19, 0.05) 25%, 
+      transparent 25%, 
+      transparent 50%, 
+      rgba(139, 69, 19, 0.05) 50%, 
+      rgba(139, 69, 19, 0.05) 75%, 
+      transparent 75%, 
+      transparent
+    );
+  background-size: 4px 4px;
 }
-.detail {
-  background: center 100% / 100% 100% no-repeat url('../assets/paper.png');
-  padding: 40px;
-  /* border-radius: 12px; */
+
+.scroll-title:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
 }
-.main-timeline {
-  position: relative;
-  max-width: 1280px;
-  margin: 20px;
-  margin-bottom: 0;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 2px 2px 4px #ddd;
-}
-.main-timeline:before,
-.main-timeline:after {
+
+.scroll-title::before,
+.scroll-title::after {
   content: '';
-  display: block;
-  width: 100%;
-  clear: both;
-}
-.main-timeline:before {
-  content: '';
-  width: 12px;
-  height: calc(100% - 80px);
-  background: #cca872;
   position: absolute;
-  top: 0;
-  left: 50%;
-  margin-top: 40px;
+  width: 8px;
+  height: 100%;
+  background: #f9f2e6;
+  border: 2px solid #8b4513;
+  border-radius: 4px;
 }
-.main-timeline .timeline {
-  width: 50%;
-  float: left;
-  position: relative;
-  z-index: 1;
+
+.scroll-title::before {
+  left: -6px;
 }
-.main-timeline .timeline:before,
-.main-timeline .timeline:after {
-  content: '';
-  display: block;
-  width: 100%;
-  clear: both;
+
+.scroll-title::after {
+  right: -6px;
 }
-.main-timeline .timeline:first-child:before,
-.main-timeline .timeline:last-child:before {
-  content: '';
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #fff;
-  border: 4px solid #cca872;
-  position: absolute;
-  top: -16px;
-  right: -24px;
-  z-index: 1;
-}
-.main-timeline .timeline:last-child:before {
-  top: auto;
-  bottom: -16px;
-}
-.main-timeline .timeline:last-child:nth-child(even):before {
-  right: auto;
-  left: -12px;
-  bottom: -2px;
-}
-.main-timeline .timeline-content {
-  display: flex;
+
+.period {
+  width: 150px;
+  padding: 4px 8px;
+  background: rgba(230, 230, 230, 0.8);
+  border-radius: 4px;
+  font-size: 0.9em;
   text-align: center;
-  margin-top: 8px;
-  position: relative;
-  transition: all 0.3s ease 0s;
+  border: 1px solid rgba(139, 69, 19, 0.2);
 }
-.main-timeline .timeline-content:before {
-  content: '';
-  width: 100%;
-  height: 5px;
-  background: #cca872;
-  position: absolute;
-  top: 88px;
-  left: 0;
-  z-index: -1;
-}
-.main-timeline .circle {
-  width: 160px;
-  height: 120px;
-  background: #fff;
-  float: left;
-  margin-right: 24px;
-  margin-top: 30px;
-  position: relative;
-  transition: all 0.3s;
-}
-.main-timeline .circle:hover {
-  transform: scale(1.1);
-}
-.main-timeline .content {
+
+.content {
   flex: 1;
-  padding-right: 40px;
+  max-width: 500px;
+  background: rgba(253, 245, 230, 0.9);
+  border: 2px solid #8b4513;
+  border-radius: 8px;
+  padding: 15px 20px;
   position: relative;
+  margin-left: 30px;
+  transition: all 0.3s ease;
 }
-.main-timeline .year {
-  display: block;
-  padding: 8px;
-  margin-top: 40px;
-  margin-bottom: 32px;
-  background: #bacac6;
-  border-radius: 7px;
-  font-size: 14px;
-  color: #50616d;
-  font-weight: 600;
+
+.content:hover {
+  transform: translateX(5px);
+  box-shadow: 
+    -5px 5px 15px rgba(139, 69, 19, 0.1),
+    0 0 30px rgba(139, 69, 19, 0.05);
 }
-.main-timeline .title {
-  font-size: 25px;
-  font-weight: 600;
-  color: #50616d;
-  margin: 0;
+
+.content::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: #c4a484;
+  transform: translateY(-50%);
 }
-.main-timeline .description {
-  font-size: 14px;
-  color: #50616d;
+
+.content::after {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #8b4513;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.entry:hover .content::after {
+  transform: translateY(-50%) scale(1.2);
+  box-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+}
+
+.dynasty-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #8b4513;
+  border-bottom: 1px solid #d4b895;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+}
+
+.description {
+  font-size: 0.95em;
+  line-height: 1.8;
   text-align: justify;
-  line-height: 2;
-  font-weight: 600;
+  color: #333;
 }
-.main-timeline .timeline:nth-child(2n) .timeline-content,
-.main-timeline .timeline:nth-child(2n) .circle {
-  float: right;
-}
-.main-timeline .timeline:nth-child(2n) .circle {
-  margin: 30px 0 0 24px;
-}
-.main-timeline .timeline:nth-child(2n) .circle:before {
-  right: auto;
-  left: -33px;
-  box-shadow: -7px 0 9px -7px #444 inset;
-}
-.main-timeline .timeline:nth-child(2n) .circle span:before,
-.main-timeline .timeline:nth-child(2n) .circle span:after {
-  right: auto;
-  left: -33px;
-  border-radius: 0 0 21px 0;
-}
-.main-timeline .timeline:nth-child(2n) .circle span:after {
-  border-radius: 0 21px 0 0;
-}
-.main-timeline .timeline:nth-child(2n) .content {
-  padding: 0 0 0 40px;
-  margin-left: 2px;
-}
-.main-timeline .timeline:nth-child(2n) .icon {
-  right: auto;
-  left: -14px;
-}
-.main-timeline .timeline:nth-child(2n) .icon:before,
-.main-timeline .timeline:nth-child(2n) .icon span:before,
-.main-timeline .timeline:nth-child(2n) .icon span:after {
-  left: auto;
-  right: -15px;
-}
-.main-timeline .timeline:nth-child(2n) .icon span:before {
-  border-radius: 0 0 0 21px;
-}
-.main-timeline .timeline:nth-child(2n) .icon span:after {
-  border-radius: 21px 0 0 0;
-}
-.main-timeline .timeline:nth-child(2) {
-  margin-top: 180px;
-}
-.main-timeline .timeline:nth-child(odd) {
-  margin: -175px 0 0 0;
-}
-.main-timeline .timeline:nth-child(even) {
-  margin-bottom: 80px;
-}
-.main-timeline .timeline:first-child,
-.main-timeline .timeline:last-child:nth-child(even) {
-  margin: 0;
-}
-@media only screen and (max-width: 990px) {
-  .main-timeline:before {
-    left: 95%;
-  }
-  .main-timeline .timeline {
-    width: 100%;
-    float: none;
-    margin-bottom: 20px !important;
-  }
-  .main-timeline .timeline:first-child:before,
-  .main-timeline .timeline:last-child:before {
-    left: auto !important;
-    right: -13px !important;
-  }
-  .main-timeline .timeline:nth-child(2n) .circle {
-    float: left;
-    margin: 30px 24px 0 0;
-  }
-  .main-timeline .timeline:nth-child(2n) .circle:before {
-    right: -33px;
-    left: auto;
-    box-shadow: 7px 0 9px -7px #444 inset;
-  }
-  .main-timeline .timeline:nth-child(2n) .circle span:before,
-  .main-timeline .timeline:nth-child(2n) .circle span:after {
-    right: -33px;
-    left: auto;
-    border-radius: 0 0 0 21px;
-  }
-  .main-timeline .timeline:nth-child(2n) .circle span:after {
-    border-radius: 21px 0 0 0;
-  }
-  .main-timeline .timeline:nth-child(2n) .content {
-    padding: 0 40px 0 0;
-    margin-left: 0;
-  }
-  .main-timeline .timeline:nth-child(2n) .icon {
-    right: -14px;
-    left: auto;
-  }
-  .main-timeline .timeline:nth-child(2n) .icon:before,
-  .main-timeline .timeline:nth-child(2n) .icon span:before,
-  .main-timeline .timeline:nth-child(2n) .icon span:after {
-    left: -15px;
-    right: auto;
-  }
-  .main-timeline .timeline:nth-child(2n) .icon span:before {
-    border-radius: 0 0 21px 0;
-  }
-  .main-timeline .timeline:nth-child(2n) .icon span:after {
-    border-radius: 0 21px 0 0;
-  }
-  .main-timeline .timeline:nth-child(2),
-  .main-timeline .timeline:nth-child(odd),
-  .main-timeline .timeline:nth-child(even) {
-    margin: 0;
+
+@media (max-width: 768px) {
+  .timeline {
+    margin: 10px;
+    padding: 10px;
   }
 }
 </style>

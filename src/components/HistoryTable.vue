@@ -805,7 +805,7 @@
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .table-container {
   margin-top: 20px;
   margin-right: 20px;
@@ -829,4 +829,70 @@ a {
 table {
   width: 100%;
 }
+</style> -->
+
+<style scoped>
+.table-container {
+  margin-top: 20px;
+  height: fit-content;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.table-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1.5px;
+  background: #fff;
+}
+
+th, td {
+  padding: 12px 8px;
+  transition: all 0.2s ease;
+}
+
+td:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+  transition: all 0.2s ease;
+  display: block;
+  position: relative;
+}
+
+a:hover {
+  transform: scale(1.02);
+}
+
+a strong {
+  font-weight: 600;
+}
+
+.small {
+  font-size: 0.857em;
+  color: #666;
+}
+
+/* 优化标题样式 */
+.firstRow th {
+  padding: 16px;
+  background: linear-gradient(145deg, #f6f6f6, #EFEEEE);
+}
+
+/* 为不同时期添加微妙的渐变背景 */
+[bgcolor="#C1F8F7"] { background: linear-gradient(145deg, #C1F8F7, #b1e8e7); }
+[bgcolor="#E1FFE1"] { background: linear-gradient(145deg, #E1FFE1, #d1efd1); }
+[bgcolor="#FFECE1"] { background: linear-gradient(145deg, #FFECE1, #efded1); }
+[bgcolor="#FFE1FF"] { background: linear-gradient(145deg, #FFE1FF, #efd1ef); }
+[bgcolor="#FFFFE1"] { background: linear-gradient(145deg, #FFFFE1, #efef d1); }
 </style>
